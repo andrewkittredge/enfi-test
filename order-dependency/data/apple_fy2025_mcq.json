@@ -1,0 +1,164 @@
+[
+ {
+  "id": "aapl-rd-fy25",
+  "topic": "statement of operations",
+  "difficulty": "easy",
+  "question": "What was Apple's research and development expense for the twelve months ended September 27, 2025?",
+  "options": ["$34,550 million", "$31,370 million", "$27,601 million", "$62,151 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-dividend-per-share",
+  "topic": "press release",
+  "difficulty": "easy",
+  "question": "What cash dividend per share did Apple's board of directors declare in this announcement?",
+  "options": ["$0.26", "$1.85", "$7.49", "$15,421 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-services-net-sales-q4",
+  "topic": "statement of operations",
+  "difficulty": "medium",
+  "question": "What were Apple's Services net sales for the three months ended September 27, 2025?",
+  "options": ["$28,750 million", "$24,972 million", "$7,106 million", "$109,158 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-iphone-fy25",
+  "topic": "net sales by category",
+  "difficulty": "medium",
+  "question": "What were Apple's iPhone net sales for the twelve months ended September 27, 2025?",
+  "options": ["$209,586 million", "$201,183 million", "$49,025 million", "$46,222 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-greater-china-q4",
+  "topic": "net sales by segment",
+  "difficulty": "medium",
+  "question": "What were Apple's Greater China net sales for the three months ended September 27, 2025?",
+  "options": ["$14,493 million", "$15,033 million", "$64,377 million", "$66,952 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-products-cost-of-sales-q4",
+  "topic": "statement of operations",
+  "difficulty": "medium",
+  "question": "What was Apple's cost of sales for Products for the three months ended September 27, 2025?",
+  "options": ["$73,716 million", "$47,019 million", "$54,125 million", "$194,116 million"],
+  "answer": 1,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-diluted-eps-fy25",
+  "topic": "statement of operations",
+  "difficulty": "medium",
+  "question": "What was Apple's diluted earnings per share for the twelve months ended September 27, 2025?",
+  "options": ["$7.46", "$7.49", "$6.08", "$1.85"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-cash-ending-fy25",
+  "topic": "statement of cash flows",
+  "difficulty": "medium",
+  "question": "What was Apple's ending balance of cash, cash equivalents, and restricted cash and cash equivalents for the twelve months ended September 27, 2025?",
+  "options": ["$29,943 million", "$35,934 million", "$5,991 million", "$30,737 million"],
+  "answer": 1,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-buybacks-fy25",
+  "topic": "statement of cash flows",
+  "difficulty": "medium",
+  "question": "How much cash did Apple use for repurchases of common stock in the twelve months ended September 27, 2025?",
+  "options": ["$90,711 million", "$94,949 million", "$15,421 million", "$120,686 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-other-income-q4",
+  "topic": "statement of operations",
+  "difficulty": "hard",
+  "question": "What was Apple's other income/(expense), net for the three months ended September 27, 2025?",
+  "options": ["$377 million", "$19 million", "$(321) million", "$269 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-marketable-securities-noncurrent",
+  "topic": "balance sheet",
+  "difficulty": "hard",
+  "question": "What was the carrying amount of Apple's non-current marketable securities as of September 27, 2025?",
+  "options": ["$18,763 million", "$35,228 million", "$77,723 million", "$91,479 million"],
+  "answer": 2,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-term-debt-current",
+  "topic": "balance sheet",
+  "difficulty": "hard",
+  "question": "How much of Apple's term debt was classified as a current liability as of September 27, 2025?",
+  "options": ["$12,350 million", "$10,912 million", "$78,328 million", "$85,750 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-accounts-receivable",
+  "topic": "balance sheet vs cash flows",
+  "difficulty": "hard",
+  "question": "What was Apple's accounts receivable, net, as reported on the balance sheet as of September 27, 2025?",
+  "options": ["$39,777 million", "$33,410 million", "$(6,682) million", "$(3,788) million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-inventories",
+  "topic": "balance sheet vs cash flows",
+  "difficulty": "hard",
+  "question": "What were Apple's inventories as reported on the balance sheet as of September 27, 2025?",
+  "options": ["$5,718 million", "$7,286 million", "$1,400 million", "$(1,046) million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-shares-outstanding",
+  "topic": "balance sheet vs statement of operations",
+  "difficulty": "hard",
+  "question": "How many shares of Apple common stock were issued and outstanding as of September 27, 2025?",
+  "options": ["14,773,260 thousand", "15,116,786 thousand", "14,815,307 thousand", "14,863,609 thousand"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-tax-provision-gaap-q4-fy24",
+  "topic": "non-GAAP reconciliation",
+  "difficulty": "hard",
+  "question": "As reported under GAAP, what was Apple's provision for income taxes for the three months ended September 28, 2024?",
+  "options": ["$14,874 million", "$4,628 million", "$5,338 million", "$29,749 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-net-income-non-gaap-fy24",
+  "topic": "non-GAAP reconciliation",
+  "difficulty": "hard",
+  "question": "What was Apple's net income as adjusted (non-GAAP) for the twelve months ended September 28, 2024?",
+  "options": ["$93,736 million", "$10,246 million", "$103,982 million", "$112,010 million"],
+  "answer": 2,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ },
+ {
+  "id": "aapl-state-aid-charge",
+  "topic": "non-GAAP reconciliation footnote",
+  "difficulty": "hard",
+  "question": "What was the net amount of the one-time income tax charge Apple recorded in the fourth quarter of 2024 relating to the European Commission's State Aid decision?",
+  "options": ["$10.2 billion", "$15.8 billion", "$4.8 billion", "$823 million"],
+  "answer": 0,
+  "context_file": "apple_fy2025_8k_ex99-1.txt"
+ }
+]
