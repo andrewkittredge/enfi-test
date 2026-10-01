@@ -24,7 +24,7 @@ hf = [
     "torch>=2.4",
     "transformers>=4.45",
     "accelerate>=1.0",
-    "bitsandbytes>=0.45",
+    "bitsandbytes>=0.45; sys_platform == 'linux' and platform_machine == 'x86_64'",
 ]
 
 # CUDA 12.8 wheels for torch (the default PyPI wheel is CPU-only on Windows).
