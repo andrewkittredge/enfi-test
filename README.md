@@ -1,8 +1,11 @@
 # Order Dependency in LLM Answers to Multiple-Choice Questions
 
-LLMs exhibit order dependency bias when answering multiple choice questions (MCQs), see Zheng et al. https://openreview.net/pdf?id=shr9PXz7T0. Order dependency is a bias in responses based on the order of tokens in the prompt, i.e. the response to a prompt can change based merely on the order of the input without any change in semantics. In the context of answering multiple choice questions, order dependency manifests as an LLM's bias towards selecting a choice based on position, for instance tending to select the first answer.
+LLMs exhibit order dependency bias when answering multiple choice questions (MCQs), see Zheng et al. https://openreview.net/pdf?id=shr9PXz7T0. Order dependency is a bias in responses based on the order of tokens in the prompt, i.e. the response to a prompt can change based merely on the order of the input without any change in semantics. 
 
-The `order-dependency` package passes MCQs to an LLM, records the responses and generates an analysis of the bias.
+In the context of answering multiple choice questions, order dependency manifests as a bias towards selecting an answer based on index of answer in the list of answers, for instance tending to select the first answer.
+
+This project demonstrates the order dependecy bias by prompting LLM models with MCQs multiple times, with the correct answer in a different position in the list of answers each time, the 'answer-moving attack' in Zheng and infering the bias from the results.
+
 
 ## Example
 
@@ -33,21 +36,20 @@ uv run --group hf order-dependency experiment --backend hf --model huggyllama/ll
 
 ## Evaluation Methodology
 
-The MMLU test set (Hendrycks et al.), 20 questions from each of its 57 subjects, 1,140 in total, is
-used to look for the bias. Each question is asked under the four `place-correct` orderings: 4,560
-prompts per model.
+**Data**
 
-Four models:
+The MMLU test set (Hendrycks et al.), 20 questions from each of its 57 subjects, 1,140 in total.
+
+**Models**
 
 - Claude Opus 5 (thinking disabled)
 - Claude Haiku 4.5
 - Qwen2.5-0.5B, a small open-weight base model run locally as a stand-in for the models studied in the paper
 - LLaMA-7B (`huggyllama/llama-7b`, one of the models in the paper), run locally with 4-bit (bitsandbytes NF4) weights because the fp16 model does not fit an 8 GB GPU
 
-**Metrics.** ODS, consistency and majority vote are computed on which *option* the model chose, not
-which letter; RStd and the letter shares, reported in each run's `report.md`, are by design about position.
+**Metrics** 
 
-- **ODS** (Option Dependency Score): how much the model's choice of option moves when only the
+- **ODS** : how much the model's choice of option moves when only the
   ordering changes, on a `[0, 1]` scale. `P_p(o)` is the probability that the model picked option `o`
   when shown ordering `p`. ODS sums the variance of `P_p(o)` across orderings over the `K` options,
   scaled so the worst case is 1:
@@ -90,15 +92,15 @@ of questions changed answer, 30% accuracy, and the same preference for A and C. 
 with RStd 18.1 (fp16) and 25.5 (4-bit). Their gpt-3.5-turbo had an RStd of 5.5, above Haiku 4.5 at
 2.8 and Opus 5 at 0.3.
 
-## Financial Filing
+## Financial Filing (Beta)
 
-*This example is a demonstration only and is preliminary: the question set is small (18 hand-written
+*The question set is small (18 hand-written
 questions over one filing), only two models were run, and the results have not been checked to the
 standard of the MMLU runs above.*
 
-MMLU questions are short and likely seen in training. `order-dependency/data/apple_fy2025_mcq.json` asks 18 questions
-about Apple's fiscal 2025 fourth-quarter results with the full 8-K press release (about 4,300 tokens)
-supplied as context in every prompt. The four options are figures from the same line of the filing
+`order-dependency/data/apple_fy2025_mcq.json` asks 18 questions
+about Apple's 2025 Q4 8-K press release, which is included in the repo in `order-dependency/data`
+The four options (answers) are figures from the same line of the filing
 (the answer plus another period, another statement, or the GAAP rather than non-GAAP column), so they
 cannot be separated without reading the document.
 
@@ -107,7 +109,7 @@ uv run order-dependency experiment --model claude-haiku-4-5 --thinking omit --ef
 uv run --group hf order-dependency experiment --backend hf --model Qwen/Qwen2.5-0.5B -q data/apple_fy2025_mcq.json --strategy full -o apple-fy2025-qwen05b
 ```
 
-**Headline metrics** from each run's `report.md`.
+**Headline metrics**
 
 | Metric | Claude Haiku 4.5 | Qwen2.5-0.5B |
 |---|---|---|
