@@ -1,10 +1,8 @@
 # Order Dependency in LLM Answers to Multiple-Choice Questions
 
-LLMs exhibit order dependency bias when answering multiple choice questions (MCQs), see Zheng et al. https://openreview.net/pdf?id=shr9PXz7T0.  Order dependency is when LLMs bias their answer based on the order of tokens in the prompt, i.e. the response to a prompt can change based merely on the order of the input without any change in semantics.  In the context of answering multiple choice questions, order dependency manifests as an LLM's bias towards selecting a choice based on position, for instance tending to select the first answer.
+LLMs exhibit order dependency bias when answering multiple choice questions (MCQs), see Zheng et al. https://openreview.net/pdf?id=shr9PXz7T0.  Order dependency is a bias in responses based on the order of tokens in the prompt, i.e. the response to a prompt can change based merely on the order of the input without any change in semantics.  In the context of answering multiple choice questions, order dependency manifests as an LLM's bias towards selecting a choice based on position, for instance tending to select the first answer.
 
 The `order-dependency` package passes MCQs to an LLM, records the responses and generates an analysis of the bias.
-
-The project was substantially developed by `Claude Code` using the `Fable 5.1` model prompted to replicate Zheng.
 
 ## Example
 Run a small example with local inference using the Qwen2.5-0.5B model-
@@ -37,11 +35,13 @@ uv run --group hf order-dependency experiment --backend hf --model huggyllama/ll
 ## Evaluation Methodology
 
 The MMLU test set (Hendrycks et al.), 20 questions from each of its 57 subjects, 1,140 in
-total, each asked under the four `place-correct` orderings: 4,560 prompts per model. Four models:
-Claude Opus 5 (thinking disabled), Claude Haiku 4.5, and Qwen2.5-0.5B, a small open-weight base model
-run locally as a stand-in for the models studied in the paper, and LLaMA-7B (`huggyllama/llama-7b`, one
-of the models in the paper), run locally with 4-bit (bitsandbytes NF4) weights because the fp16 model
-does not fit an 8 GB GPU (`results/mmlu-llama7b-4bit/`).
+total is used to look for the bias. Each question is asked under the four `place-correct` orderings: 4,560 prompts per model. 
+
+Four models:
+- Claude Opus 5 (thinking disabled), 
+- Claude Haiku 4.5, 
+- Qwen2.5-0.5B, a small open-weight base model run locally as a stand-in for the models studied in the paper, and 
+- LLaMA-7B (`huggyllama/llama-7b`, one of the models in the paper), run locally with 4-bit (bitsandbytes NF4) weights because the fp16 model does not fit an 8 GB GPU (`results/mmlu-llama7b-4bit/`).
 
 **Metrics.** ODS, consistency and majority vote are computed on which *option* the model chose, not
 which letter; RStd and the letter shares are, by design, about position.
@@ -55,12 +55,16 @@ which letter; RStd and the letter shares are, by design, about position.
   ```
   A model that picks the same option under every ordering scores 0. A model that always answers "A"
 picks a different option under each ordering and scores 1.
-- **Questions with any change**, **consistency** (agreement with the question's modal answer) and
-  **majority-vote accuracy** (accuracy of the modal option, a mitigation that comes free from the
-  same data).
-- **Answer-moving attack** (the paper's Table 1, reproduced in each run's `report.md`): accuracy with
-  the gold option forced to each letter versus accuracy on the options as authored. Its standard
-  deviation is **RStd**, and the share of answers landing on each letter shows position bias directly.
+- **Questions with any change**: the number of questions whose chosen option differed under at
+  least one ordering.
+- **Mean consistency**: for each question, the share of orderings on which the model chose the
+  question's modal (most common) option, averaged over questions. 100% means every ordering gave the
+  same answer; a model that picks a different option under each of four orderings scores 25%.
+- **Accuracy per prompt**: the share of all prompts answered correctly, averaged over orderings, so
+  a question is only fully credited when it is right under every ordering. It is the accuracy a user
+  sees who does not control the option order.
+- **Majority-vote accuracy**: accuracy of each question's modal option, a mitigation that comes free
+  from the same data.
 
 ## Results
 
